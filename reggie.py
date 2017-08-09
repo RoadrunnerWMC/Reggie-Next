@@ -17084,10 +17084,6 @@ class ReggieWindow(QtWidgets.QMainWindow):
 
         self.ZoomLevels = [7.5, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.0, 60.0, 65.0, 70.0, 75.0, 85.0, 90.0, 95.0, 100.0, 125.0, 150.0, 175.0, 200.0, 250.0, 300.0, 350.0, 400.0]
 
-        self.AutosaveTimer = QtCore.QTimer()
-        self.AutosaveTimer.timeout.connect(self.Autosave)
-        self.AutosaveTimer.start(20000)
-
         # add the undo stack object
         self.undoStack = UndoStack()
 
@@ -17133,8 +17129,13 @@ class ReggieWindow(QtWidgets.QMainWindow):
 
     def __init2__(self):
         """
-        Finishes initialization. (fixes bugs with some widgets calling mainWindow.something before it's init'ed
+        Finishes initialization. (fixes bugs with some widgets calling mainWindow.something before it's init'ed)
         """
+		
+		self.AutosaveTimer = QtCore.QTimer()
+        self.AutosaveTimer.timeout.connect(self.Autosave)
+        self.AutosaveTimer.start(20000)
+		
         # set up actions and menus
         self.SetupActionsAndMenus()
 
