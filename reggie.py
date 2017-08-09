@@ -17131,11 +17131,11 @@ class ReggieWindow(QtWidgets.QMainWindow):
         """
         Finishes initialization. (fixes bugs with some widgets calling mainWindow.something before it's init'ed)
         """
-		
-		self.AutosaveTimer = QtCore.QTimer()
+
+        self.AutosaveTimer = QtCore.QTimer()
         self.AutosaveTimer.timeout.connect(self.Autosave)
         self.AutosaveTimer.start(20000)
-		
+
         # set up actions and menus
         self.SetupActionsAndMenus()
 
